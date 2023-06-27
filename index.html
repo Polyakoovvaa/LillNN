@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="Website icon" type="png" href="img/logo.png">
+    <title>Лучшие букеты НН</title>
+</head>
+<body>
+<div id="app">
+    <div class="container" >
+        <!--    Шапка сайта   -->
+        <div class="main-content">
+            <div class="nav-header">
+                <a class="link" href="#catalog">Каталог</a>
+                <a class="link" href="#vot">Вопросы</a>
+                <a class="link" href="#otzsv">Отзывы</a>
+                <div class="logo"><img src="img/logo.png"></div>
+                <a class="link" href="#">Акции</a>
+                <a class="link" href="#zakaz">Заказать</a>
+                <a class="link" href="#kontacts">Контакты</a>
+            </div>
+        </div>
+        <!--    Главный блок -->
+        <div class="main-box">
+            <div class="main-txt">
+                <h1>
+                    <span>БЫСТРАЯ &nbsp;</span>
+                    <span>ДОСТАВКА &nbsp; </span>
+                    <span>ЦВЕТОВ &nbsp; </span>
+                    <span>В &nbsp;</span>
+                    <span>НИЖНЕМ &nbsp;</span>
+                    <span>НОВГОРОДЕ </span>
+                </h1>
+                <p>Подберем и доставим <b> в течение часа </b> </p>
+                <a class="main-btn" href="#catalog" >Выбрать букет </a>
+                <div class="main-icon">
+                    <div class="advantages advantages1">
+                        <img class="icon" src="img/delivery-truck%20(1)%201.png">
+                        <p>Бесплатная доставка от 2500 рублей</p>
+                    </div>
+                    <div class="advantages advantages2">
+                        <img class="icon" src="img/flower-bouquet%201.png">
+                        <p>Ежедневная поставка цветов</p>
+                    </div>
+                    <div class="advantages advantages3">
+                        <img class="icon" src="img/back-in-time%201.png">
+                        <p>Работаем без выходных с 9:00-19:00</p>
+                    </div>
+                </div>
+            </div>
+            <img class="fonflower" src="img/fonflower.png">
+        </div>
+        <div class="line"></div>
+
+
+
+        <!--    Каталог товаров-->
+        <div class="product-catalog">
+            <h1 id="catalog" class="titlee">Каталог</h1>
+            <div class="sort-search">
+                <input class="input-search" placeholder="Поиск" v-model="searchValue" type="text">
+                <div class="sort-product">
+                    <select id="sort-product" v-model="selectOption">
+                        <option selected="true" disabled="disabled" value="">Фильтрация товаров</option>
+                        <option v-for="op in sortOption" id="three" :value="op.value" :key="op.value"> {{ op.name}}</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="block-products">
+                <div class="content">
+                    <div class="block-tovarov" id="block">
+                        <div class="itemclass" v-for="cards in sortedAndSearchCards" >
+                            <img :src='cards.img' class="imgclass">
+                            <p class="bodyclass">{{cards.body}}</p>
+                            <strong class="priceclass">{{cards.price}}
+                                p.</strong>
+                        </div>
+
+                    </div>
+                    <button id="btn" @click="showCards" :hidden="openAll"> Открыть все </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <h1 id="vot" class="titlee vodo">Вопрос-ответ</h1>
+        <div class="box">
+
+            <p class="heading">Ответы на часто задаваемые вопросы.</p>
+            <div class="faqs">
+                <details>
+                    <summary>Сколько стоит доставка?</summary>
+                    <p class="text">Доставка 500 рублей. При заказе от 2500руб доставка бесплатная.</p>
+                </details>
+                <details>
+                    <summary>Как можно забронировать букет?</summary>
+                    <p class="text">По номеру телефона.</p>
+                </details>
+                <details>
+                    <summary>Все ли букеты есть на сайте в наличии?</summary>
+                    <p class="text">Конечно же нет, уточняйте по номеру телефона.</p>
+                </details>
+                <details>
+                    <summary>Можно ли сделать букет на заказ?</summary>
+                    <p class="text">Да, для этого необходимо связаться с нами в мессенджерах или по телефону.</p>
+                </details>
+                <details>
+                    <summary>Есть ли услуга "Оформления мероприятия цветами?"</summary>
+                    <p class="text">Есть, для этого необходимо связаться с нами в мессенджерах или по телефону.</p>
+                </details>
+                <details>
+                    <summary>Безопасно ли скидывать предоплату?</summary>
+                    <p class="text">Предоплата нужна не только компаниям, оказывающим услуги, но и самим клиентам. Сегодня каждый клиент ценит свое время и деньги, следовательно, посещая салон красоты, он хочет, чтобы забронированное им время не было отдано другому клиенту. Поэтому, внося предоплату за услуги, клиент сам себя защищает от возможных форс-мажорных обстоятельств. </p>
+                </details>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <!--    отзывы-->
+        <h1 id="otzsv" class="titlee">Отзывы</h1>
+        <div class="reviews">
+
+            <button class="prev" id="prev">← </button>
+            <div class="sliders" id="sliders">
+                <img class="slid" src="img/otzv1.png" alt="" >
+                <img v-bind:style="{margin: ['30px']}" class="slid " src="img/otzv2.png" alt="" >
+                <img class="slid " src="img/otzv3.png" alt="" >
+            </div>
+            <button class="next" id="next">→ </button>
+        </div>
+
+
+        <div class="line"></div>
+
+        <div class="form">
+            <h1 id="zakaz" class="titlee gfg">Заказать</h1>
+            <a class="btn-sz" title="Whatsapp" href="https://api.whatsapp.com/send?phone=79506234591&text=">Whatsapp</a>
+            <a class="btn-sz" title="Telegram" href="https://t.me/lill_bouquet" target="_blank">Telegram</a>
+            <a class="btn-sz"  title="Viber" href="viber://chat?number=79270000000">Viber</a>
+            <a class="btn-sz"  title="Vkontakte" href="https://vk.com/im?media=&sel=-191671858"> Вконтакте</a>
+            <a class="btn-sz"  title="Flowwow" href="https://flowwow.com/shop/lill/">FLOWWOW</a>
+            <div class="ppp">
+                <p>Доставка по городу с 9:00 до 20:00 от 2500 руб бесплатная    ..........................................................................................................................................0.00 Р</p>
+                <p>Доставка в нерабочее время с 20:00 до 9:00    ..................................................................................................................................................................0.00 Р</p>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="kontact">
+            <h2 id="kontacts">Контакты</h2>
+            <p>Адрес:<br>
+                Мещерский бул., 9, Канавинский район, жилой район Мещерское Озеро. Этаж цокольный. </br></p>
+            <p>График работы:
+                <br> пн-вс 9:00-19:00</br></p>
+
+        </div>
+
+        <div class="footer">
+            <iframe class="karta"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2211.4185934388097!2d43.92732307684316!3d56.339861773307184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4151d664a8581c97%3A0xaa9c3ab885e3783!2zTGlsbCDQptCy0LXRgtC-0YfQvdCw0Y8g0JzQsNGB0YLQtdGA0YHQutCw0Y8!5e0!3m2!1sru!2sru!4v1686330776760!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="nav-footer">
+                <img class="logofooter" src="img/logo.png">
+                <div class="fot">
+                    <a href="index2.html">Возврат и обмен</a>
+                    <a href="index3.html">Корпоративным клиентам</a>
+                    <a href="index4.html">Партнеры и спонсоры</a>
+                    <a href="index.html">Главная</a>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="btn-up btn-up_hide"></div>
+    </div>
+
+</div>
+
+
+
+<script  src="https://unpkg.com/vue@next"></script>
+<script src="test.js"></script>
+<script src="arrow.js"></script>
+<script src="title.js"></script>
+<script src="slaider.js"></script>
+</body>
+</html>
